@@ -5,7 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Core.Util
-{
+{   //提供了播放粒子系统特效和精灵特效的功能，并使用对象池来管理特效的实例化和重用。
     public class EffectManager : MonoBehaviour
     {
         public static EffectManager Instance;

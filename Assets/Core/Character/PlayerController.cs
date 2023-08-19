@@ -9,14 +9,14 @@ namespace Core.Character
     public class PlayerController : MonoBehaviour
     {
         public bool isPlayerControlled = true;
-
+        
         public float speed = 100.0f;
         public float accelerationMultiplier = 2.5f;
         public float maxAcceleration = 2.0f;
         public float jumpForce = 350.0f;
         public float airDrag = 0.8f;
         public Transform bottomTransform;
-
+        
         public GameObject hurtFlashObject;
         public ParticleSystem hurtParticles;
         
@@ -29,7 +29,7 @@ namespace Core.Character
         private BoxCollider2D collider;
         private AudioSource audioSource;
 
-        // Moving axis
+        //移动
         private float horizontal;
         private float vertical;
         private Vector2 currentVelocity;
@@ -55,13 +55,13 @@ namespace Core.Character
         private int environmentLayerMask;
         private bool isDying;
 
-        // Attack
+        //攻击
         private AttackController attackController;
         private bool wasAttacking;
         private bool isAttackButtonDown;
         private bool wasAttackButtonDown;
 
-        // Dash
+        //冲击
         private bool isDashing;
         private bool wasDashing;
         private float dashTimer;
@@ -70,16 +70,16 @@ namespace Core.Character
         private float dashTime = 0.3f;
         private float dashCooldown = 1.0f;
 
-        // Hit Protection
+        //受伤保护
         private float hitProtectionDuration = 1.0f;
         private float hitProtectionTimer;
         public bool CanBeHit => hitProtectionTimer <= 0;
 
-        // Camera
+        //相机
         private CameraController camController;
         private Camera cam;
 
-        // Physics
+        //物理
         private PhysicsMaterial2D physicsMaterial;
 
         private bool controllable = true;
@@ -88,7 +88,7 @@ namespace Core.Character
 
         private LayerMask combatLayerMask;
         
-        // Properties
+        
         public bool Controllable
         {
             get => controllable && !BlockingUI;
@@ -126,7 +126,7 @@ namespace Core.Character
         public event Action OnStunned;
 
         public static PlayerController Instance;
-
+        
         private void Awake()
         {
             if (Instance == null)
@@ -147,8 +147,7 @@ namespace Core.Character
 
             combatLayerMask = ~LayerMask.GetMask("Player");
         }
-
-        // Start is called before the first frame update
+        
         void Start()
         {
             baseScaleX = transform.localScale.x;
@@ -159,11 +158,10 @@ namespace Core.Character
 
             maxSpeed = speed * maxAcceleration;
         }
-
-        // Update is called once per frame
+        
+        //更新受保护的击中计时器、跳跃冷却计时器、冲刺计时器和冲刺冷却计时器。
         void Update()
         {
-            // Update timers
             if (hitProtectionTimer > 0)
                 hitProtectionTimer -= Time.deltaTime;
 
@@ -175,7 +173,7 @@ namespace Core.Character
             if (dashCooldownTimer > 0)
                 dashCooldownTimer -= Time.deltaTime;
         }
-
+        //收集输入并进行移动，攻击和碰撞处理等。
         private void FixedUpdate()
         {
             GatherInput();
@@ -190,7 +188,7 @@ namespace Core.Character
             previousPositionX = transform.position.x;
             previousPositionY = transform.position.y;
         }
-
+        //收集输入并进行移动，攻击和碰撞处理等。
         private void Move()
         {
             if (!Controllable)
@@ -229,7 +227,7 @@ namespace Core.Character
             wasJumping = isJumping;
             wasDashing = isDashing;
         }
-
+        //收集水平和垂直轴的移动，更新加速度和外部加速度
         private void GatherInput()
         {
             if (!Controllable)
@@ -251,7 +249,7 @@ namespace Core.Character
                 if (useGamepad)
                     snapThreshold = 0;
 
-                // Normalize inputs
+                //归一化输入
                 if (horizontal > snapThreshold) horizontal = 1;
                 else if (horizontal < -snapThreshold) horizontal = -1;
                 if (vertical > snapThreshold) vertical = 1;
@@ -262,10 +260,10 @@ namespace Core.Character
 
             }
         }
-
+        //冲刺
         private void Dash()
         {
-            if (dashTimer <= 0 && dashCooldownTimer <= 0 && isDashing && !wasDashing && isOnGround)
+            if (dashTimer <= 0 && dashCooldownTimer <= 0 && isDashing && !wasDashing)
             {
                 animator.SetTrigger(CharacterAnimations.Dash);
                 //SoundManager.Instance.PlaySound(dashSound, 0.2f, audioSource, true);
@@ -409,7 +407,7 @@ namespace Core.Character
                 camController.UpdateVertically();
             }
         }
-
+        //更新角色的加速度
         private void UpdateAcceleration()
         {
             if (Mathf.Abs(horizontal) > 0)

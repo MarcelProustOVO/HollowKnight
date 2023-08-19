@@ -1,4 +1,4 @@
-﻿using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime.Tasks;
 using Core.Character;
 using Core.Util;
 using DG.Tweening;
@@ -6,13 +6,14 @@ using UnityEngine;
 
 namespace Core.AI
 {
-    public class Jump : EnemyAction
+    public class AirDash : EnemyAction
     {
-        public float horizontalForce = 5.0f;
+        public float dashForce = 5.0f;
         public float jumpForce = 10.0f;
 
         public float buildupTime;
         public float jumpTime;
+        public float dashTime;
 
         public string buildupAnimation;
         public string mainAnimation;
@@ -23,28 +24,46 @@ namespace Core.AI
         public Vector3 effectOffset;
 
         private bool hasLanded;
+        private float defaultGravity;
 
         private Tween buildupTween;
         private Tween jumpTween;
+        private Tween dashTween;
+
+        public override void OnAwake()
+        {
+            base.OnAwake();
+            defaultGravity = body.gravityScale;
+        }
         
         public override void OnStart()
         {
-            buildupTween = DOVirtual.DelayedCall(buildupTime, StartJump, false);
+            body.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
+            buildupTween = DOVirtual.DelayedCall(buildupTime, StartBuildUp, false);
             animator.SetTrigger(buildupAnimation);
         }
 
-        private void StartJump()
+        private void StartBuildUp()
+        {
+            body.gravityScale = 0;
+            body.velocity = Vector2.zero;
+            buildupTween = DOVirtual.DelayedCall(buildupTime, StartDash, false);
+        }
+
+        private void StartDash()
         {
             if(!string.IsNullOrEmpty(mainAnimation))
                 animator.SetTrigger(mainAnimation);
-            
-            var direction = player.transform.position.x < transform.position.x ? -1 : 1;
-            body.AddForce(new Vector2(horizontalForce * direction, jumpForce), ForceMode2D.Impulse);
+            body.gravityScale = defaultGravity;
+            var direction = transform.localScale.x;
+            var distance = Mathf.Abs(transform.position.x - player.transform.position.x);
+            var downwardsDirection = distance < 4f ? -1 : -0.5f;
+            body.AddForce(new Vector2(direction, downwardsDirection)* dashForce, ForceMode2D.Impulse);
             
             if(jumpEffect != null)
                 EffectManager.Instance.PlaySpriteOneShot(jumpEffect,transform.position + effectOffset,direction>0);
 
-            jumpTween = DOVirtual.DelayedCall(jumpTime, () =>
+            dashTween = DOVirtual.DelayedCall(dashTime, () =>
             {
                 hasLanded = true;
                 body.velocity = Vector2.zero;
@@ -62,7 +81,9 @@ namespace Core.AI
         {
             buildupTween?.Kill();
             jumpTween?.Kill();
+            dashTween?.Kill();
             hasLanded = false;
+            body.gravityScale = defaultGravity;
         }
     }
 }
