@@ -34,6 +34,7 @@ namespace Core.Character
         // Update is called once per frame
         public bool TryAttack()
         {
+            //判断是否可以攻击
             if (attackCooldown <= 0)
             {
                 // Add controller support with Right analog stick

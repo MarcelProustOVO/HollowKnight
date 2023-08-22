@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0640b71b-6b01-44f1-8b9e-2d5c3709e74a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HollowKnight/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HollowKnight/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/AI/Tasks/Jump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/AI/Tasks/Jump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Character/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Character/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/UI/Postamt SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/UI/Postamt SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Util/EffectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Util/EffectManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/False Knight Boss Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/False Knight Boss Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/False Knight Boss Scene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/False Knight Boss Scene.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hornet Boss Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hornet Boss Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hornet Boss Scene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hornet Boss Scene.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Core/Character/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Character/AttackController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,25 +35,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\FlameZ\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\FlameZ\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\FlameZ\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\FlameZ\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\FlameZ\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\FlameZ\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Standalone Player.Start Unity">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../test/HollowKnight\Tutorials2D.exe" />
@@ -117,6 +109,8 @@
       <option name="presentableId" value="Default" />
       <updated>1692425287304</updated>
       <workItem from="1692425288340" duration="12519000" />
+      <workItem from="1692448397790" duration="5529000" />
+      <workItem from="1692589424606" duration="1740000" />
     </task>
     <servers />
   </component>
@@ -131,19 +125,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Core/AI/Tasks/Hornet/ThrowNeedle.cs</url>
-          <line>64</line>
-          <properties documentPath="D:\Code\unity\HollowKnight\Assets\Core\AI\Tasks\Hornet\ThrowNeedle.cs" initialLine="64" containingFunctionPresentation="Method 'OnUpdate'">
-            <startOffsets>
-              <option value="2267" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2326" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Core/AI/Tasks/Hornet/ThrowNeedle.cs</url>
           <line>70</line>
